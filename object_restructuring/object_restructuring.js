@@ -48,7 +48,38 @@ console.log(role);//user
 //console.log(role);//user
 
 //Одно из самых полезных свойств деструкторизации!!!
+//Деструкторизация аргументов функции
+function connect ({
+    host = 'localhost',
+    port = 12345,
+    user = 'guest'}) {
+        console.log('user:', user, 'port:', port, 'host:', host);
+}
 
+//Если в аргументах передать пустой объект, то функция примет параметры по умолчанию
+connect({});//user: guest port: 12345 host: localhost
+
+//Если хотя бы один из параметров был добавлен, то функция примет его на входе
+connect({port: 1111});//user: guest port: 1111 host: localhost
+
+//Последний аспект деструкторизации объектов это REST элемент, работающего также, как REST аргументы в функции, собирая в отдельный объект все те свойства, которые не были присвоены переменным
+//Синтаксис выглядит приблизительно так
+const dict = {
+    duck: 'quack',
+    dog: 'wuff',
+    mouse: 'squeak'
+};
+//Достаем значение duck из объекта diсt
+
+//const {duck} = dict;
+//console.log(duck);//quack
+
+//Создаем новую константу otherAnimals, в которую попадут все значения, которые не были деструкторированы в выражении const {duck} = dict;
+
+const { duck, ...otherAnimals} = dict;
+console.log(otherAnimals);//{dog: "wuff", mouse: "squeak"}
+
+//!!!Правила для REST элементов такие же как для REST параметров!!!
 
 
 
