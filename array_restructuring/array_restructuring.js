@@ -49,17 +49,78 @@ const dict = {
     hamster: 'squeak'
 };
 
-//Находим всех зверей, которые говорят squeak
+//1 шаг - Находим всех зверей, которые говорят squeak
 //Получаем все значения и ключи объекта с помощью метода Object.entries()
 //Object.entries() метод возвращает массив собственных перечисляемых свойств указанного объекта в формате [key, value], в том же порядке, что и в цикле for...in (разница в том, что for-in также перечисляет свойства из цепочки прототипов). Порядок элементов в массиве который возвращается Object.entries() не зависит от того как обьект обьявлен. Если существует нужда в определенном порядке, то  масив должен быть отсортирован до вызова метода, например Object.entries(obj).sort((a, b) => a[0] - b[0]);
 
-const res = Object.entries(dict);
-console.log(res);//(4) [Array(2), Array(2), Array(2), Array(2)]
+const res = Object.entries(dict)
+
+//2 шаг - Разбираем полученную структуру, чтобы найти те элементы с squeak
+    
+    //.filter((arr) => arr[1] === 'squeak');
+
+//console.log(res) к 1 шагу;
+//const res = Object.entries(dict)
+//(4) [Array(2), Array(2), Array(2), Array(2)]
                 //0: (2) ["duck", "quack"]
                 //1: (2) ["dog", "wuff"]
                 //2: (2) ["mouse", "squeak"]
                 //3: (2) ["hamster", "squeak
-//Разбираем полученную структуру, чтобы найти те элементы с squeak
+
+//console.log(res) ко 2 шагу;
+//.filter((arr) => arr[1] === 'squeak');
+//0: (2) ["mouse", "squeak"]
+//1: (2) ["hamster", "squeak"]
+
+//3 шаг - Применим метод деструкторизации
+.filter(([, value]) => value === 'squeak')
+
+//console.log(res); к 3 шагу
+//0: (2) ["mouse", "squeak"]
+//1: (2) ["hamster", "squeak"]
+
+//4 шаг - Достаем из массива только ключи где животные произносят 'squeak'
+    .map(([key]) => key);
+    console.log(res);//(2) ["mouse", "hamster"]
+
+//Синтаксис деструкторизации позволяет комбинировать деструкторизацию для объектов и деструкторизацию для массивов
+const shape = {
+    type: 'segment',
+    coordinates: {
+        start: [10, 15],
+        end: [17, 15]
+    }
+}
+//Получаем координаты точек start и end
+//Используем синтаксис деструкторизации для объекта
+const { coordinates: { start: [startX, startY], end: [endX, endY]} } = shape;
+console.log(startX, startY, endX, endY);//10 15 17 15
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
