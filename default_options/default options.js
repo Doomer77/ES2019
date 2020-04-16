@@ -23,7 +23,7 @@ fetchOrder(15);//Getting 15 order starting from 0
 fetchOrder(15, 50);//Getting 15 order starting from 50
 
 //Не обязательно присваивать значение каждому параметру
-function fetchOrder2(count, start = 0) {
+function fetchOrder2(count, start  = 0) {
     console.log('Getting', count, 'order starting from', start);
 }
 fetchOrder(15);//Getting 15 order starting from 0
